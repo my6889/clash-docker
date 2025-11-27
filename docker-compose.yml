@@ -1,0 +1,25 @@
+services:
+  clash:
+    image: clash
+    build: .
+    container_name: clash
+    restart: always
+    ports:
+      - 7890:7890
+    volumes:
+      - ./config.yaml:/etc/clash/config.yaml
+
+  subconverter:
+    image: tindy2013/subconverter:0.9.0
+    container_name: subconverter
+    restart: always
+
+  cron:
+    image: cron 
+    build: ./cron
+    container_name: cron
+    restart: always
+    volumes:
+      - ./config.yaml:/etc/clash/config.yaml
+      - ./cron/update_clash.sh:/update_clash.sh
+      - ./cron/crontab.config:/etc/crontabs/root

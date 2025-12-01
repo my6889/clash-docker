@@ -1,6 +1,7 @@
 services:
   clash:
     image: registry.cn-shenzhen.aliyuncs.com/swpb/clash:20251130
+    build: .
     container_name: clash
     restart: always
     ports:
@@ -15,6 +16,7 @@ services:
 
   cron:
     image: registry.cn-shenzhen.aliyuncs.com/swpb/cron-alpine:20251130
+    build: ./cron
     container_name: cron
     restart: always
     depends_on: 

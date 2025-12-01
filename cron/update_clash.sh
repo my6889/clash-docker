@@ -5,6 +5,10 @@ set -e
 # 如果使用了未定义的变量，则报错
 set -u
 
+# 等待5秒，确保subconverter服务启动完成
+echo "等待5秒，确保subconverter服务启动完成..."
+sleep 5
+
 # --- 配置 ---
 # 订阅链接
 SUB_URL="https://xxx.example.com"
@@ -67,9 +71,9 @@ echo "5. 正在替换旧的配置文件..."
 cat "${TEMP_CONFIG_PATH}" > "${CLASH_CONFIG_PATH}"
 rm -f "${TEMP_CONFIG_PATH}"
 
-echo "6. 正在重启 Clash 服务..."
-# 重启 Clash 服务以应用新配置
+echo "6. 正在重载 Clash 服务..."
+# 重载 Clash 服务以应用新配置
 #systemctl restart clash || log_and_exit "重启 Clash 服务失败，请检查 Clash 服务状态。"
-curl -X PUT http://clash:9090/configs -d '{}' || log_and_exit "重启 Clash 服务失败，请检查 Clash 服务状态。"
+curl -X PUT http://clash:9090/configs -d '{}' || log_and_exit "重载 Clash 服务失败，请检查 Clash 服务状态。"
 
-echo "Clash 配置更新并重启成功！"
+echo "Clash 配置更新并重载成功！"

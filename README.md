@@ -30,10 +30,9 @@ clash-docker/
 
 1. 设置订阅链接：在 `cron/update_clash.sh` 中填入 `SUB_URL` 。
 2. 修改定时任务配置文件权限
-``
+```
    chown root:root cron/crontab.config
-   chmod 600 cron/crontab.config`
-
+   chmod 600 cron/crontab.config
 ```
 3. 修改定时任务策略
 `vim cron/crontab.config`

@@ -6,7 +6,7 @@ set -e
 set -u
 
 # 等待5秒，确保subconverter服务启动完成
-echo "等待5秒，确保subconverter服务启动完成..."
+echo "5秒后开始更新Clash配置..."
 sleep 5
 
 # --- 配置 ---
